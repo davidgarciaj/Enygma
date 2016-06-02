@@ -17,16 +17,17 @@ public class MecanismoOffset extends Mecanismo
     @Override
     public int cifrado(int num){
         int result = 0;
+        int i = 0;
+        int aux;
         while(num > 10){
-            if(result != 0){
-                
-                result+= ((num % 10) + getEncriptador()) * 10;
-            }
-            else{
-                result = (num % 10) + getEncriptador();
-            }
+            aux = (num % 10) + getEncriptador();
+            if(aux >= 10)
+                aux = aux % 10;
+            result += aux * (Math.pow(10, i));
             num = num / 10;
+            i++;
         }
+        result += num * (Math.pow(10, i));
         return result;
     }
 
@@ -35,7 +36,19 @@ public class MecanismoOffset extends Mecanismo
      */
     @Override
     public int descifrado(int num){
-        return -1;
+        int result = 0;
+        int i = 0;
+        int aux;
+        while(num > 10){
+            aux = (num % 10) - getEncriptador() + 10;
+            if(aux >= 10)
+                aux = aux % 10;
+            result += aux * (Math.pow(10, i));
+            num = num / 10;
+            i++;
+        }
+        result += num * (Math.pow(10, i));
+        return result;
     }
 }
 
