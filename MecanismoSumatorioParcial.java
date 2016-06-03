@@ -17,7 +17,13 @@ public class MecanismoSumatorioParcial extends Mecanismo
      */
     @Override
     public int cifrado(int num){
-        return -1;
+        int result = 0;
+        int sum = num;
+        while( sum <= getEncriptador()){
+            result += sum;
+            sum--;
+        }
+        return result;
     }
 
     /**
@@ -25,6 +31,12 @@ public class MecanismoSumatorioParcial extends Mecanismo
      */
     @Override
     public int descifrado(int num){
-        return -1;
+        int result = 0;
+        int divi = num - getEncriptador() + 1;
+        int sum = 1;
+        for(int i = 0; i <= divi; i++)
+            sum += i;
+        result = (num + sum)/ divi;
+        return result;
     }
 }
