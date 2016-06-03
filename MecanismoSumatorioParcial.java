@@ -19,7 +19,7 @@ public class MecanismoSumatorioParcial extends Mecanismo
     public int cifrado(int num){
         int result = 0;
         int sum = num;
-        while( sum <= getEncriptador()){
+        while( sum >= getEncriptador()){
             result += sum;
             sum--;
         }
@@ -32,7 +32,7 @@ public class MecanismoSumatorioParcial extends Mecanismo
     @Override
     public int descifrado(int num){
         int result = 0;
-        int divi = num - getEncriptador() + 1;
+        int divi = num - getEncriptador();
         int sum = 1;
         for(int i = 0; i <= divi; i++)
             sum += i;
