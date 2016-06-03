@@ -31,12 +31,12 @@ public class MecanismoSumatorioParcial extends Mecanismo
      */
     @Override
     public int descifrado(int num){
-        int result = 0;
-        int divi = num - getEncriptador();
-        int sum = 1;
-        for(int i = 0; i <= divi; i++)
-            sum += i;
-        result = (num + sum)/ divi;
+        int sum = getEncriptador();
+        int result = num;
+        while(sum < result){
+            result -= sum;
+            sum++;
+        }
         return result;
     }
 }
